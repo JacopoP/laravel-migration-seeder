@@ -13,16 +13,16 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('trains', function (Blueprint $table){
-            $table->bigIncrements('id');
+        Schema::create('trains', function (Blueprint $table) {
+            $table->id();
             $table->string('codice');
             $table->string('azienda');
-            $table->integer('capienza_massima');
-            $table->boolean('pronto');
+            $table->integer('capienza');
+            $table->boolean('disponibilità');
             $table->string('prossima_tratta');
             $table->date('inizio_servizio');
             $table->date('ultima_revisione');
-            // $table->timestamps();
+            $table->timestamps();
         });
     }
 
@@ -33,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::drop('trains');
+        Schema::dropIfExists('trains');
     }
 };
