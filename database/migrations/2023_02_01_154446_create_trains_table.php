@@ -15,11 +15,10 @@ return new class extends Migration
     {
         Schema::create('trains', function (Blueprint $table) {
             $table->id();
-            $table->string('codice');
-            $table->string('azienda');
-            $table->integer('capienza');
+            $table->string('codice') -> unique();
+            $table->integer('capienza') -> unsigned();
             $table->boolean('disponibilità');
-            $table->string('prossima_tratta');
+            $table->string('prossima_tratta', 64) -> nullable();
             $table->date('inizio_servizio');
             $table->date('ultima_revisione');
             $table->timestamps();
